@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello World</title>
+    <title>Local Time Clock</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <main class="container">
-      <h1 id="message">Hello, world.</h1>
-      <button id="hello-button" type="button">Click me</button>
+    <main class="container" aria-live="polite">
+      <p class="label">Local time</p>
+      <h1 id="clock" class="clock">--:--:-- --</h1>
     </main>
 
     <script src="app.js"></script>
