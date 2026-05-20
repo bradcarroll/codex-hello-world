@@ -1,29 +1,68 @@
-function startClock() {
-  const clock = document.getElementById('clock');
+function copyCurrentLink() {
+  const button = document.getElementById('copy-link');
 
-  if (!clock) {
-    console.error('Clock element not found: expected an element with id="clock".');
+  if (!button) {
     return;
   }
 
-  function updateClock() {
-    const now = new Date();
-    const formattedTime = now.toLocaleTimeString([], {
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      hour12: true,
-    });
+  button.addEventListener('click', async () => {
+    const url = window.location.href;
 
-    clock.textContent = formattedTime;
+    try {
+      await navigator.clipboard.writeText(url);
+      button.textContent = 'Copied';
+      setTimeout(() => {
+        button.textContent = 'Copy Link';
+      }, 1200);
+    } catch (error) {
+      console.error('Could not copy link:', error);
+      button.textContent = 'Copy failed';
+      setTimeout(() => {
+        button.textContent = 'Copy Link';
+      }, 1200);
+    }
+  });
+}
+
+function handleWorldNavigation() {
+  const links = document.querySelectorAll('[data-world-link]');
+  const sceneTitle = document.querySelector('.scene-title');
+
+  links.forEach((link) => {
+    link.addEventListener('click', () => {
+      if (!sceneTitle) {
+        return;
+      }
+
+      sceneTitle.textContent = link.textContent || 'World';
+    });
+  });
+}
+
+function enableDebugPanelIfNeeded() {
+  const panel = document.getElementById('event-runtime-panel');
+
+  if (!panel) {
+    return;
   }
 
-  updateClock();
-  setInterval(updateClock, 1000);
+  const query = new URLSearchParams(window.location.search);
+  const explicitDebugFlag = query.get('debug') === 'true';
+  const adminDebugMode = document.body.dataset.adminDebug === 'true';
+
+  if (explicitDebugFlag || adminDebugMode) {
+    panel.hidden = false;
+  }
+}
+
+function initFrontPorchAtmosphere() {
+  copyCurrentLink();
+  handleWorldNavigation();
+  enableDebugPanelIfNeeded();
 }
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', startClock);
+  document.addEventListener('DOMContentLoaded', initFrontPorchAtmosphere);
 } else {
-  startClock();
+  initFrontPorchAtmosphere();
 }
