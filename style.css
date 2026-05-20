@@ -1,7 +1,7 @@
 :root {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #f8fafc;
-  background-color: #0f172a;
+  background-color: #020617;
 }
 
 * {
@@ -11,33 +11,101 @@
 body {
   margin: 0;
   min-height: 100vh;
+  background: radial-gradient(circle at top, #0f172a 0%, #020617 70%);
+}
+
+.world-page {
+  min-height: 100vh;
+  padding: 1rem;
   display: grid;
-  place-items: center;
-  background: radial-gradient(circle at top, #1e293b 0%, #0f172a 55%, #020617 100%);
+  grid-template-rows: auto 1fr auto;
+  gap: 1rem;
 }
 
-.container {
-  text-align: center;
-  padding: 2.5rem 3rem;
-  border-radius: 1rem;
-  background: rgba(15, 23, 42, 0.65);
-  border: 1px solid rgba(148, 163, 184, 0.28);
-  box-shadow: 0 20px 40px rgba(2, 6, 23, 0.45);
-  backdrop-filter: blur(8px);
+.world-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.75rem;
 }
 
-.label {
-  margin: 0;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  color: #94a3b8;
-}
-
-.clock {
-  margin: 0.6rem 0 0;
-  font-size: clamp(2rem, 8vw, 4rem);
-  font-weight: 700;
-  letter-spacing: 0.08em;
+.worlds-menu summary,
+.toolbar-button {
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: rgba(15, 23, 42, 0.72);
   color: #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 0.45rem 0.7rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.worlds-menu {
+  position: relative;
+}
+
+.worlds-menu nav {
+  margin-top: 0.45rem;
+  display: grid;
+  gap: 0.35rem;
+  min-width: 10rem;
+  background: rgba(2, 6, 23, 0.96);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 0.5rem;
+  padding: 0.4rem;
+}
+
+.worlds-menu nav a {
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 0.3rem 0.4rem;
+  border-radius: 0.35rem;
+}
+
+.worlds-menu nav a:hover {
+  background: rgba(51, 65, 85, 0.55);
+}
+
+.world-scene {
+  border-radius: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 58vh;
+  background:
+    linear-gradient(to top, rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 0.25)),
+    radial-gradient(circle at 30% 30%, rgba(244, 114, 182, 0.28), transparent 45%),
+    radial-gradient(circle at 70% 20%, rgba(56, 189, 248, 0.2), transparent 50%),
+    linear-gradient(135deg, #1e293b, #0b1120);
+}
+
+.scene-title {
+  margin: 0;
+  font-size: clamp(1.8rem, 6vw, 2.7rem);
+}
+
+.scene-caption {
+  margin: 0.35rem 0 0;
+  color: #cbd5e1;
+}
+
+.interaction-panel {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.control-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.event-runtime-panel {
+  margin-top: 0.2rem;
+  border: 1px dashed rgba(248, 113, 113, 0.6);
+  border-radius: 0.65rem;
+  padding: 0.8rem;
+  background: rgba(69, 10, 10, 0.35);
 }

@@ -3,13 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Local Time Clock</title>
+    <title>Front Porch Atmosphere</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <main class="container" aria-live="polite">
-      <p class="label">Local time</p>
-      <h1 id="clock" class="clock">--:--:-- --</h1>
+    <main class="world-page" aria-live="polite">
+      <header class="world-toolbar" aria-label="World controls">
+        <details class="worlds-menu">
+          <summary>Worlds</summary>
+          <nav aria-label="World navigation">
+            <a href="#front-porch" data-world-link="front-porch">Front Porch</a>
+            <a href="#world-entrance" data-world-link="world-entrance">World Entrance</a>
+            <a href="#classic-home" data-world-link="classic-home">Classic Home</a>
+          </nav>
+        </details>
+
+        <button id="copy-link" class="toolbar-button" type="button">Copy Link</button>
+      </header>
+
+      <section id="world-scene" class="world-scene" aria-label="Current world scene">
+        <h1 class="scene-title">Front Porch</h1>
+        <p class="scene-caption">Ambient evening sounds, warm string lights, and a quiet breeze.</p>
+      </section>
+
+      <aside class="interaction-panel" aria-label="Player and interaction controls">
+        <div class="control-row">
+          <button class="toolbar-button" type="button">Like</button>
+          <button class="toolbar-button" type="button">Dislike</button>
+          <button class="toolbar-button" type="button">Share Track</button>
+        </div>
+        <div class="control-row">
+          <button class="toolbar-button" type="button">Live Comments</button>
+          <button class="toolbar-button" type="button">Ambience</button>
+          <button class="toolbar-button" type="button">Focus</button>
+        </div>
+      </aside>
+
+      <section id="event-runtime-panel" class="event-runtime-panel" aria-label="Event runtime debug controls" hidden>
+        <h2>Event Runtime Debug</h2>
+        <button class="toolbar-button" type="button">Pause Runtime</button>
+        <button class="toolbar-button" type="button">Resume Runtime</button>
+      </section>
     </main>
 
     <script src="app.js"></script>
